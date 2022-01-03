@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model SignIn
+<h1>Sign In</h1>  <!-- yukarıdaki satırda sign in sayfası dizaynı-->
+<form asp-controller="Security" asp-action="SignIn" method="post"> <!--oturum açma formunu SecurityController'ın SignIn() eylemine gönderir. -->
+    <table>
+        <tr>
+            <td class="right"><label asp-for="UserName"></label> :</td>
+            <td class="left"><input type="text" asp-for="UserName" /></td>
+        </tr>
+        <tr>
+            <td class="right"><label asp-for="Password"></label> :</td>
+            <td class="left">
+                <input type="password" asp-for="Password" />
+            </td>
+        </tr>
+        <tr>
+            <td class="right"><label asp-for="RememberMe"></label> :</td>
+            <td class="left">
+                <input type="checkbox" asp-for="RememberMe" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Sign In</button>
+            </td>
+        </tr>
+    </table>
+    <div asp-validation-summary="All" class="message"></div> <!-- tüm hata mesajlarını çağırır. -->
+    <h3>
+        <a asp-controller="Security" asp-action="Register">Create New User Account</a>  <!-- kullanıcı kayıt sayfasına yönlendirir.-->
+    </h3>
+</form>

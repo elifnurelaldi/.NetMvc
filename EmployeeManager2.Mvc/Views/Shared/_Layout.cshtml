@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>                                                 
+<html>                                                         <!--görünüm öğeleri burda tutulur renderbody etiketi ile çağrılır -->
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Employee Manager</title>
+    <link href="~/Styles/site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</head>
+<body>
+    <h1>
+        Employee Manager
+    </h1>
+    <hr />
+    <div>
+        @RenderBody()
+    </div>
+    <br />
+    <hr />                                           <!-- sign out butonu her sayfaya eklenmesi gerektiğinden buraya ekliyoruz-->
+    @if (User.Identity.IsAuthenticated)                  
+    {                                  <!-- yukarıdaki satırda geçerli isteğin kimliği doğrulanmış kullanıcıdan gelip gelmediği kontrol edilir-->
+    <h2>You are signed in as @User.Identity.Name</h2> <!-- KullanıcıAdı ve Oturumu Kapat düğmesi, yalnızca sisteme giriş yaptıysa görüntülenir -->
+    <form asp-controller="Security" asp-action="SignOut" method="post"> <!--oturumu Kapat düğmesi, formu SecurityController'ın SignOut() eylemine gönderir. SignOut() eylemi gösterilir -->
+        <button type="submit">Sign Out</button>
+    </form>
+    }
+
+</body>
+</html>
